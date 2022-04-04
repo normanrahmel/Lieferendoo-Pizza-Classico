@@ -33,16 +33,15 @@ function renderDishesAndCart() {
 
 function renderShoppingCart() {
     let shoppingCart = document.getElementById('shoppingCartDishes');
+    shoppingCart.innerHTML = "";
     if (dishesToCart.length == 0) {
-        shoppingCart.innerHTML += /*html*/ `
+        shoppingCart.innerHTML = /*html*/ `
         <div id="fillYourShoppingCart">
             <img src="img/cart-2-64.png" alt="">
             <h3>Fülle deinen Warenkorb</h3>
             <p>Füge leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
         </div>
         `;
-    } else if (dishesToCart.length > 1) {
-        shoppingCart.innerHTML += "";
     } else {
         for (let i = 0; i < dishesToCart.length; i++) {
             const dishe = dishesToCart[i];
