@@ -1,0 +1,186 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    font-size: 18px;
+}
+
+
+/*Abstand LINKS/RECHTS*/
+
+.paddingLeftRight {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+/*Header*/
+
+header {
+    background-color: #f86500;
+    height: 150px;
+    padding: 32px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+header img {
+    height: 100px;
+    width: 220px;
+    border-radius: 7px;
+}
+
+
+/*Großes Pizza Bild*/
+
+.sectionPizzaImg img {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+
+
+/*Pizza Logo*/
+
+.sectionLogoImg img {
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+    border-radius: 100%;
+    border-color: #f86500;
+    border-width: 4px;
+    border-style: groove;
+    background-color: #f8630067;
+}
+
+.sectionLogoImg {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: -64px;
+}
+
+
+/*Bewertungen und Überschrift*/
+
+.sectionRatingHeading {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.stars {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+    padding-right: 10px;
+}
+
+.icons {
+    height: 35px;
+    width: 35px;
+}
+
+
+/*Content*/
+
+.content {
+    display: flex;
+    margin-bottom: 32px;
+    margin-top: 32px;
+}
+
+.containerFood {
+    width: 70%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#renderEatBox {
+    width: 85%;
+}
+
+.eatBox {
+    height: 190px !important;
+    margin: 8px;
+    padding: 16px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.096);
+    background-color: #f8f4f0db;
+    border-color: #f86500;
+    border-width: 1px;
+    border-style: groove;
+    border-radius: 4px;
+}
+
+.headingSectionFood {
+    background-color: #f8f4f0db;
+    width: 90%;
+    height: 140px;
+    word-wrap: break-word;
+    margin: 8px;
+    padding: 8px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.096);
+    border-color: #f86500;
+    border-width: 1px;
+    border-style: groove;
+    border-radius: 4px;
+}
+
+.shoppingCart {
+    width: 30%;
+    height: 100vh;
+    background-color: #f8f4f0db;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    transition: all 315ms ease-in-out;
+}
+
+.addItem {
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+}
+
+input {
+    width: 75px;
+    height: 35px;
+    border-radius: 5px;
+    margin-right: 7px;
+}
+
+button {
+    width: 75px;
+    height: 35px;
+    text-align: center;
+    margin-left: 7px;
+    margin-right: 7px;
+    background-color: #f86500;
+}
+
+
+/*Footer*/
+
+footer {
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 80px;
+    height: 150px;
+    background-color: rgb(201, 198, 195);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}

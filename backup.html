@@ -1,0 +1,128 @@
+<div class="content paddingLeftRight">
+
+    <div class="containerFood">
+
+        <div class="headingSectionFood">
+            <h3>Unsere besten Pizzen: </h3>
+            <p>werden jeweils mit viel Liebe belegt, im Steinofen gebacken, herrlich knusprig-dünn geliefert.</p>
+        </div>
+
+        <div class="eatBox">
+            <h4>${dishe}</h4>
+            <p>Tomatensauce, Mozzarella, Basilikum</p>
+
+            <div class="addItem">
+                <input type="number">
+                <button type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+            <p>${price}€</p>
+        </div>
+
+        <div class="eatBox">
+            <h4>${dishe}</h4>
+            <p>Hinterschinken, Käse</p>
+
+            <div class="addItem btn">
+                <input type="number">
+                <button onclick="" type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+            <p>${price}€</p>
+        </div>
+
+        <div class="eatBox">
+            <h4>${dishe}</h4>
+            <p>Hinterschinken, frische Egerlinge, Käse</p>
+
+            <div class="addItem">
+                <input type="number">
+                <button type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+            <p>${price}€</p>
+        </div>
+
+        <div class="eatBox">
+            <h4>${dishe}</h4>
+            <p>Meeresfrüchte, Käse, Knoblauch</p>
+
+            <div class="addItem">
+                <input type="number">
+                <button onclick="" type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+            <p>${price}€</p>
+        </div>
+
+        <div class="eatBox">
+            <h4>${dishe}</h4> <br>
+            <p>Thunfisch, Zwiebeln, Käse</p>
+
+            <div class="addItem">
+                <input type="number">
+                <button onclick="" type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+            <p>${price}€</p>
+        </div>
+
+        <div class="eatBox">
+            <h4>${dishe}</h4>
+            <p>Schinken, Salami und Champignons</p>
+
+            <div class="addItem">
+                <input type="number">
+                <button onclick="" type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+            <p>${price}€</p>
+        </div>
+    </div>
+
+</div>
+
+<div id="shoppingCart" class="shoppingCart paddingLeftRight">
+    <h1>Warenkorb</h1>
+
+    <div id="shoppingCartDishes">
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    function renderShoppingCart(dishesToCart) {
+        let shoppingCart = document.getElementById('shoppingCartDishes');
+        for (let i = 0; i < dishes.length; i++) {
+            const dishe = dishes[i];
+            const price = prices[i];
+            const Ingredient = ingredients[i];
+            if (dishesToCart.length === 0) {
+                shoppingCart.innerHTML += /*html*/ `
+            <div>
+                <h4>Fülle deinen Warenkorb</h4>
+                <p>Füge leckere Gerichte aus der Speisekarte hinzu <br> und bestelle dein Essen.</p>
+            </div>
+            `;
+            } else {
+                shoppingCart.innerHTML += /*html*/ `  
+            <div >
+               <h4>${dishe}</h4>
+              <!-- <p>${Ingredient}</p>-->
+               <p>${price}€</p>
+            </div>
+
+            <div class="addItem">
+                <input type="number">
+                <button type="button" class="btn btn-secondary">+</button>
+                <button type="button" class="btn btn-secondary">-</button>
+            </div>
+           `;
+            }
+        }
+    }
+</script>
