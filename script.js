@@ -21,7 +21,7 @@ function renderDishesAndCart() {
 
                     <div class="addItem">
                         <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
-                        <button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>
+                        <!--<button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>-->
                     </div>
                     <p>${price}€</p>
                 </div>
@@ -50,7 +50,7 @@ function renderShoppingCart() {
             const amountIndex = amountToCart[i];
             shoppingCart.innerHTML += /*html*/ ` 
             <div id="total-price">
-
+            
             </div> 
             <div >
                <h3>${dishe}</h3>
@@ -87,8 +87,8 @@ function addItemToCart(i) {
 
 function deleteItemFromCart(i) {
 
-    if (dishesToCart >= 1) {
-
+    if (amountToCart[i] > 1) {
+        amountToCart[i]--;
     } else {
         dishesToCart.splice(i, 1);
         pricesToCart.splice(i, 1);
@@ -110,8 +110,14 @@ function shoppingCartFinance() {
         totalPrice = sum.toFixed(2).replace('.', ',');
 
         total.innerHTML = /*html*/ `   
-        <h3>Gesamt</h3>
-        <span>${totalPrice}€</span>
+        <h3>Gesamtkosten</h3>
+        <h4>${totalPrice}€</h4>
+        <h5>Für unsere <b>Kostenlose Lieferung</b> qualifiziert</h5>
+        <button onclick="placeOrder()" class="btn" id="place-order">Bestellung Aufgeben</button>
         `;
     }
+}
+
+function placeOrder() {
+    alert('Deine Bestellung kommt in 30-Minuten zu dir Nachhause. Bitte Bezahle in Bar.')
 }
