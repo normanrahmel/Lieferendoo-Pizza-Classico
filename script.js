@@ -8,12 +8,14 @@ let ingredientsToCart = [];
 let amountToCart = [];
 
 
-function renderDishesAndCart() {
+function renderDishesAndCart(sum) {
     let renderEatBox = document.getElementById('renderEatBox')
+
     for (let i = 0; i < dishes.length; i++) {
         const dishe = dishes[i];
         const price = prices[i];
         const Ingredient = ingredients[i];
+
         renderEatBox.innerHTML += /*html*/ `
           <div class="eatBox">
                     <h4>${dishe}</h4>
@@ -23,7 +25,7 @@ function renderDishesAndCart() {
                         <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
                         <!--<button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>-->
                     </div>
-                    <p>${price}€</p>
+                    <p>${price.toFixed(2).replace('.', ',')}€</p>
                 </div>
     `;
     }
@@ -55,7 +57,7 @@ function renderShoppingCart() {
             <div >
                <h3>${dishe}</h3>
                <p>${Ingredient}</p>
-               <p>${price}€</p>
+               <p>${price.toFixed(2).replace('.', ',')}€</p>
             </div>
 
             <div class="addItem">
@@ -102,7 +104,6 @@ function deleteItemFromCart(i) {
 
 function shoppingCartFinance() {
     let total = document.getElementById('total-price');
-    //let orderButtonMobile = document.getElementById('order-button-mobile');
     let sum = 0;
 
     for (let i = 0; i < dishesToCart.length; i++) {
