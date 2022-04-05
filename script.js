@@ -48,7 +48,10 @@ function renderShoppingCart() {
             const price = pricesToCart[i];
             const Ingredient = ingredientsToCart[i];
             const amountIndex = amountToCart[i];
-            shoppingCart.innerHTML += /*html*/ `  
+            shoppingCart.innerHTML += /*html*/ ` 
+            <div id="total-price">
+
+            </div> 
             <div >
                <h3>${dishe}</h3>
                <p>${Ingredient}</p>
@@ -79,12 +82,13 @@ function addItemToCart(i) {
         amountToCart[index]++;
     }
     renderShoppingCart();
+    shoppingCartFinance();
 }
 
 function deleteItemFromCart(i) {
 
     if (dishesToCart >= 1) {
-        dishesToCart[i]--;
+
     } else {
         dishesToCart.splice(i, 1);
         pricesToCart.splice(i, 1);
@@ -92,4 +96,22 @@ function deleteItemFromCart(i) {
         amountToCart.splice(i, 1);
     }
     renderShoppingCart();
+    shoppingCartFinance();
+}
+
+
+function shoppingCartFinance() {
+    let total = document.getElementById('total-price');
+    //let orderButtonMobile = document.getElementById('order-button-mobile');
+    let sum = 0;
+
+    for (let i = 0; i < dishesToCart.length; i++) {
+        sum += pricesToCart[i] * amountToCart[i];
+        totalPrice = sum.toFixed(2).replace('.', ',');
+
+        total.innerHTML = /*html*/ `   
+        <h3>Gesamt</h3>
+        <span>${totalPrice}€</span>
+        `;
+    }
 }
