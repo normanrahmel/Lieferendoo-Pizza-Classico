@@ -132,9 +132,10 @@ header img {
 
 .shoppingCart {
     width: 30%;
-    min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: scroll;
     background-color: #d3d3d3;
-    position: sticky;
+    position: sticky !important;
     top: 0;
     text-align: center;
     transition: all 315ms ease-in-out;
