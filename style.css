@@ -132,7 +132,7 @@ header img {
 
 .shoppingCart {
     width: 30%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #d3d3d3;
     position: sticky;
     top: 0;

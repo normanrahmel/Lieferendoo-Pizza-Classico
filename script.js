@@ -92,15 +92,16 @@ function placeOrder() {
 
 // Render Gerichte und Leerer Warenkorb
 function templateDishesAndCart(dishe, price, Ingredient, i) {
-    return `<div class="eatBox">
-                    <h4>${dishe}</h4>
-                    <p>${Ingredient}</p>
+    return /*html*/ `
+    <div class="eatBox">
+        <h4>${dishe}</h4>
+        <p>${Ingredient}</p>
 
-                    <div class="addItem">
-                        <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
-                    </div>
-                    <p>${price.toFixed(2).replace('.', ',')}€</p>
-                </div>`;
+        <div class="addItem">
+                <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
+        </div>
+         <p>${price.toFixed(2).replace('.', ',')}€</p>
+    </div>`;
 }
 
 
@@ -124,11 +125,11 @@ function templateFullCart(dishe, price, Ingredient, amountIndex, i) {
     <div >
        <h3>${dishe}</h3>
        <p>${Ingredient}</p>
-       <p>${price.toFixed(2).replace('.', ',')}€</p>
+       <p>${amountIndex} Stück</p>
     </div>
 
     <div class="addItem">
-        <p>${amountIndex} Stück</p>
+        <p> ${price.toFixed(2).replace('.', ',')}€</p>
         <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
         <button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>
     </div>
