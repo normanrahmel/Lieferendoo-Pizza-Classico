@@ -8,26 +8,14 @@ let ingredientsToCart = [];
 let amountToCart = [];
 
 
-function renderDishesAndCart(sum) {
+function renderDishesAndCart() {
     let renderEatBox = document.getElementById('renderEatBox')
-
     for (let i = 0; i < dishes.length; i++) {
         const dishe = dishes[i];
         const price = prices[i];
         const Ingredient = ingredients[i];
 
-        renderEatBox.innerHTML += /*html*/ `
-          <div class="eatBox">
-                    <h4>${dishe}</h4>
-                    <p>${Ingredient}</p>
-
-                    <div class="addItem">
-                        <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
-                        <!--<button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>-->
-                    </div>
-                    <p>${price.toFixed(2).replace('.', ',')}€</p>
-                </div>
-    `;
+        renderEatBox.innerHTML += templateDishesAndCart(dishe, price, Ingredient, i);
     }
     renderShoppingCart();
 }
@@ -37,35 +25,16 @@ function renderShoppingCart() {
     let shoppingCart = document.getElementById('shoppingCartDishes');
     shoppingCart.innerHTML = "";
     if (dishesToCart.length == 0) {
-        shoppingCart.innerHTML = /*html*/ `
-        <div id="fillYourShoppingCart">
-            <img src="img/cart-2-64.png" alt="">
-            <h3>Fülle deinen Warenkorb</h3>
-            <p>Füge leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
-        </div>
-        `;
+        shoppingCart.innerHTML = templateEmptyCart();
     } else {
         for (let i = 0; i < dishesToCart.length; i++) {
             const dishe = dishesToCart[i];
             const price = pricesToCart[i];
             const Ingredient = ingredientsToCart[i];
             const amountIndex = amountToCart[i];
-            shoppingCart.innerHTML += /*html*/ ` 
-            <div id="total-price">
-            
-            </div> 
-            <div >
-               <h3>${dishe}</h3>
-               <p>${Ingredient}</p>
-               <p>${price.toFixed(2).replace('.', ',')}€</p>
-            </div>
 
-            <div class="addItem">
-                <p>${amountIndex} Stück</p>
-                <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
-                <button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>
-            </div>
-           `;
+            shoppingCart.innerHTML +=
+                templateFullCart(dishe, price, Ingredient, amountIndex, i);
         }
     }
 }
@@ -86,6 +55,7 @@ function addItemToCart(i) {
     renderShoppingCart();
     shoppingCartFinance();
 }
+
 
 function deleteItemFromCart(i) {
 
@@ -110,15 +80,66 @@ function shoppingCartFinance() {
         sum += pricesToCart[i] * amountToCart[i];
         totalPrice = sum.toFixed(2).replace('.', ',');
 
-        total.innerHTML = /*html*/ `   
-        <h3>Gesamtkosten</h3>
-        <h4>${totalPrice}€</h4>
-        <h5>Für unsere <b>Kostenlose Lieferung</b> qualifiziert</h5>
-        <button onclick="placeOrder()" class="btn" id="place-order">Bestellung Aufgeben</button>
-        `;
+        total.innerHTML = templateFinance(sum, totalPrice);
     }
 }
 
+
 function placeOrder() {
     alert('Deine Bestellung kommt in 30-Minuten zu dir Nachhause. Bitte Bezahle in Bar.')
+}
+
+
+// Render Gerichte und Leerer Warenkorb
+function templateDishesAndCart(dishe, price, Ingredient, i) {
+    return `<div class="eatBox">
+                    <h4>${dishe}</h4>
+                    <p>${Ingredient}</p>
+
+                    <div class="addItem">
+                        <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
+                    </div>
+                    <p>${price.toFixed(2).replace('.', ',')}€</p>
+                </div>`;
+}
+
+
+//Render if Abfrage vom Shopping Chart
+function templateEmptyCart() {
+    return /*html*/ `
+    <div id="fillYourShoppingCart">
+        <img src="img/cart-2-64.png" alt="">
+        <h3>Fülle deinen Warenkorb</h3>
+        <p>Füge leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
+    </div>
+    `;
+}
+
+//Render else Abfrage vom Shopping Chart
+function templateFullCart(dishe, price, Ingredient, amountIndex, i) {
+    return /*html*/ ` 
+    <div id="total-price">
+    
+    </div> 
+    <div >
+       <h3>${dishe}</h3>
+       <p>${Ingredient}</p>
+       <p>${price.toFixed(2).replace('.', ',')}€</p>
+    </div>
+
+    <div class="addItem">
+        <p>${amountIndex} Stück</p>
+        <button onclick="addItemToCart(${i})" type="button" class="btn btn-secondary">+</button>
+        <button onclick="deleteItemFromCart(${i})" type="button" class="btn btn-secondary">-</button>
+    </div>
+   `;
+}
+//Render Warenkorb Preis
+function templateFinance(sum, totalPrice) {
+    return /*html*/ `   
+    <h3>Gesamtkosten</h3>
+    <h4>${totalPrice}€</h4>
+    <h5>Für unsere <b>Kostenlose Lieferung</b> qualifiziert</h5>
+    <button onclick="placeOrder()" class="btn" id="place-order">Bestellung Aufgeben</button>
+    `;
 }
